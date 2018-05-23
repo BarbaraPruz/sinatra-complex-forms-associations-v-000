@@ -14,8 +14,8 @@ class PetsController < ApplicationController
     binding.pry
     @pet = Pet.create(params[:pet])
     # To do: cannot check an owner and create a new owner!
-    if !params["owner_name"].empty?  # for "or create new owner"
-      @pet.owner = Owner.create(name: params["owner_name"])
+    if !params[:owner_name].empty?  # for "or create new owner"
+      @pet.owner = Owner.create(name: params["owner_name"]).id
     end
     @pet.save
     redirect to "pets/#{@pet.id}"
