@@ -11,10 +11,10 @@ class PetsController < ApplicationController
   end
 
   post '/pets' do
-    @pet = Pet.create(params["pet"])
+    @pet = Pet.create(params)
     # To do: cannot check an owner and create a new owner!
-    if !params["owner"]["name"].empty?  # for "or create new owner"
-      @pet.owner = Owner.create(name: params["owner"]["name"])
+    if !params["owner_name"].empty?  # for "or create new owner"
+      @pet.owner = Owner.create(name: params["owner_name"])
     end
     @pet.save
     redirect to "pets/#{@pet.id}"
