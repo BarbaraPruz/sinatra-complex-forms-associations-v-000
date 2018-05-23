@@ -11,6 +11,7 @@ class PetsController < ApplicationController
   end
 
   post '/pets' do
+    binding.pry
     @pet = Pet.create(params[:pet])
     # To do: cannot check an owner and create a new owner!
     if !params["owner_name"].empty?  # for "or create new owner"
@@ -21,7 +22,6 @@ class PetsController < ApplicationController
   end
 
   get '/pets/:id' do
-    binding.pry
     @pet = Pet.find(params[:id])
     @owner = Owner.find(@pet.owner_id)
     erb :'/pets/show'
