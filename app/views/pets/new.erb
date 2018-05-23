@@ -8,9 +8,13 @@
 
   <label>Choose an existing owner:</label>
   <br></br>
+  <!-- shouldn't this be a radio button?  Doesn't checkbox allow me to select multiple owners violating model "belongs to" ?
   <%@owners.each do |owner|%>
       <input type="radio" name="owner_id" value="<%=owner.id%>" id="<%=owner.id%>"><%=owner.name%></input>
-  <%end%>
+  <%end%>-->
+  <%@owners.each do |owner|%>
+      <input type="checkbox" name="owner_id" value="<%=owner.id%>" id="<%=owner.id%>"><%=owner.name%></input>
+  <%end%>-->  
   <br></br>
 
   <label>or create a new owner:</label>
